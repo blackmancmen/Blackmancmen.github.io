@@ -21,7 +21,6 @@
             background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050508 100%);
         }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
@@ -44,12 +43,8 @@
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 2px;
-            transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--electric-blue); }
-
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -64,13 +59,8 @@
         }
 
         .hero h1 { font-size: 3rem; letter-spacing: 8px; text-transform: uppercase; }
-        .hero p { font-size: 1.1rem; color: var(--electric-blue); margin-top: 10px; }
 
-        /* General Sections */
         .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        
-        .about-text { text-align: center; margin-bottom: 40px; }
-        .about-text h2 { font-size: 2.2rem; margin-bottom: 15px; }
 
         /* Founder Sidebar */
         #founderSidebar {
@@ -103,19 +93,7 @@
             z-index: 1001;
         }
 
-        .close-btn { position: absolute; top: 20px; left: 20px; cursor: pointer; color: white; font-weight: bold; font-size: 1.2rem; }
-
-        /* Project Table */
-        table { width: 100%; margin-top: 20px; border-collapse: collapse; background: var(--glass); border-radius: 10px; overflow: hidden; }
-        th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        th { background: rgba(0, 210, 255, 0.1); color: var(--electric-blue); }
-        
-        .status { color: #aaa; font-size: 0.9rem; }
-        .clickable-row { cursor: pointer; transition: 0.3s; }
-        .clickable-row:hover { background: rgba(0, 210, 255, 0.15); }
-        .view-more { color: var(--electric-blue); font-size: 0.8rem; font-weight: bold; border: 1px solid var(--electric-blue); padding: 5px 10px; border-radius: 5px; display: inline-block; }
-
-        /* MODALS */
+        /* Modal Styles */
         .modal {
             display: none; 
             position: fixed; 
@@ -125,41 +103,77 @@
             background-color: rgba(0,0,0,0.9); 
             backdrop-filter: blur(5px);
             overflow-y: auto;
-            padding: 20px;
         }
 
         .modal-content {
             background-color: #0a0a0f;
-            margin: 5% auto; 
-            padding: 30px; 
+            margin: 15% auto; 
+            padding: 25px; 
             border: 1px solid var(--electric-blue); 
-            width: 100%; 
-            max-width: 600px; 
+            width: 90%; 
+            max-width: 500px; 
             border-radius: 15px;
-            position: relative;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
         }
 
-        .close-modal { color: var(--electric-blue); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        /* Button Styles */
+        .btn-main {
+            background: var(--electric-blue);
+            color: black;
+            padding: 15px 25px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-        .modal-header-img { width: 100%; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-outline {
+            background: transparent;
+            color: var(--electric-blue);
+            border: 1px solid var(--electric-blue);
+            padding: 15px 25px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+        table { width: 100%; border-collapse: collapse; background: var(--glass); border-radius: 10px; overflow: hidden; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         
-        .ravi-section { margin-top: 30px; text-align: center; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px;}
-        .ravi-img { width: 100%; max-width: 250px; border-radius: 10px; border: 1px solid var(--electric-blue); margin-bottom: 15px; }
+        footer { text-align: center; padding: 60px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        .insta-footer-btn {
+            color: var(--electric-blue);
+            text-decoration: none;
+            border: 1px solid var(--electric-blue);
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
 
         @media (max-width: 768px) {
-            nav { flex-direction: column; }
-            .nav-links { margin-top: 10px; }
+            nav { flex-direction: column; height: auto; padding: 10px; }
             .hero h1 { font-size: 2.2rem; }
-            #founderSidebar { right: -100%; }
-            .modal-content { margin: 15% auto; padding: 20px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <img src="logo.png" alt="CosmicChild Logo" class="logo-img">
+        <img src="logo.png" alt="Logo" class="logo-img">
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
@@ -170,156 +184,106 @@
     <div class="sidebar-btn" onclick="toggleSidebar()">FOUNDER</div>
 
     <div id="founderSidebar">
-        <div class="close-btn" onclick="toggleSidebar()">✕ CLOSE</div>
+        <div onclick="toggleSidebar()" style="cursor:pointer; font-weight:bold;">✕ CLOSE</div>
         <h2 style="color: var(--electric-blue); margin-top: 40px;">Clifern Mauricio Miranda</h2>
-        <p style="font-size: 0.8rem; margin-bottom: 20px; color: #aaa;">Founder & Narrative Designer</p>
-        <hr style="opacity: 0.2; margin-bottom: 20px;">
-        <p><b>Born:</b> 17/09/2010</p>
-        <p><b>Experience:</b> Active in game field since 2015.</p>
+        <p style="color: #aaa; font-size: 0.9rem;">Founder & Narrative Designer</p>
         <br>
-        <p style="line-height: 1.6;">Clifern kickstarted his journey at age 14 by writing metaphysical theories on Medium. He eventually transitioned into storytelling and game design, founding CosmicChild Studios.</p>
+        <p>Born: 17/09/2010. Started game design at age 14 after publishing metaphysical theories on Medium.</p>
     </div>
 
     <section class="hero">
-        <img src="logo.png" style="width: 80px; margin-bottom: 20px; opacity: 0.8;">
+        <img src="logo.png" style="width: 80px; margin-bottom: 20px;">
         <h1>CosmicChild</h1>
         <p>Games you don't just play, but feel.</p>
     </section>
 
-    <section id="about" class="section">
-        <div class="about-text">
-            <h2>About the Studio</h2>
-            <p style="color: #ccc; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                CosmicChild Studio is an independent game development studio driven by imagination, experimentation, and bold storytelling. Inspired by urban culture, real human struggles, and futuristic ideas, we blend cinematic storytelling with fast, satisfying gameplay.
-            </p>
+    <section id="projects" class="section">
+        <h2 style="text-align:center; margin-bottom:30px;">The Vault</h2>
+        <table>
+            <tr onclick="openBlitzModal()" style="cursor:pointer;">
+                <td><b>BLITZKRIEG</b></td>
+                <td>Game (In Development)</td>
+                <td style="color:var(--electric-blue)">VIEW ⚡</td>
+            </tr>
+            <tr><td>2086</td><td>Coming Soon</td><td>-</td></tr>
+            <tr><td>COSMIC COLLAPSE</td><td>Coming Soon</td><td>-</td></tr>
+        </table>
+    </section>
+
+    <section id="collaborate" class="section" style="text-align: center;">
+        <h2>Build the Future</h2>
+        <p style="margin: 20px 0; color: #ccc;">Join our community of creators.</p>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button onclick="openJoinModal()" class="btn-main" style="width: auto;">Join the Collective</button>
+            <button onclick="openCreditsModal()" class="btn-outline" style="width: auto;">Co-Founders & Credits</button>
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <h2 style="text-align: center; margin-bottom: 30px;">The Vault</h2>
-        <div style="overflow-x: auto;">
-            <table>
-                <tr>
-                    <th>Project Name</th>
-                    <th>Type</th>
-                    <th>Action</th>
-                </tr>
-                <tr class="clickable-row" onclick="openBlitzModal()">
-                    <td style="font-weight: bold; color: white;">BLITZKRIEG</td>
-                    <td class="status">Game (In Development)</td>
-                    <td><span class="view-more">VIEW MORE ⚡</span></td>
-                </tr>
-                <tr>
-                    <td>2086</td>
-                    <td class="status">Game (Coming Soon)</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>COSMIC COLLAPSE</td>
-                    <td class="status">Game (Coming Soon At Last)</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>Studio Animations</td>
-                    <td class="status">Animation (Coming Soon)</td>
-                    <td>-</td>
-                </tr>
-            </table>
+    <div id="joinModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span onclick="closeJoinModal()" style="float:right; cursor:pointer; font-size:24px;">×</span>
+            <h2 style="color:var(--electric-blue); margin-bottom: 20px;">Join the Journey</h2>
+            <p style="color:#ccc; margin-bottom: 25px;">Choose how you'd like to reach out to the studio.</p>
+            
+            <a href="mailto:clifernmauriciomiranda@gmail.com?subject=Inquiry for CosmicChild Studios" class="btn-main">Send an Email ✉️</a>
+            
+            <a href="https://www.instagram.com/cosmicchildstudios?igsh=MXZkOTkwdXVlNzlxcQ==" target="_blank" class="btn-outline">Instagram DM 📸</a>
         </div>
-    </section>
+    </div>
 
     <div id="blitzModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeBlitzModal()">×</span>
-            <img src="blitzkrieg_poster.png" class="modal-header-img" alt="Blitzkrieg Poster">
-            <h2 style="color: var(--electric-blue); font-size: 2rem; margin-bottom: 10px;">BLITZKRIEG</h2>
-            <p><i>"Move fast. Stay charged. Control the current."</i></p>
-            <p style="margin-top: 15px; color: #ccc; line-height: 1.6;">
-                A fast-paced action-adventure set in a Mumbai-inspired city. Blending smooth parkour traversal, high-energy combat, and cinematic storytelling.
-            </p>
-            <div class="ravi-section">
-                <img src="ravi_turnaround.png" class="ravi-img" alt="Ravi Thakur">
-                <h3 style="color: white; margin-bottom: 5px;">Ravi Thakur</h3>
-                <p style="color: var(--electric-blue); font-size: 0.9rem; margin-bottom: 15px;">Age: 19 | Height: 5'10" - 6'2" | Electrician Trainee</p>
-                <p style="color: #ccc; text-align: left; line-height: 1.6; font-size: 0.95rem;">
-                    Fast, skilled, and driven by ambition. When a mysterious incident changes his life, he must learn to master abilities he never asked for, uncovering truths hidden beneath the city’s glowing lights.
-                </p>
+            <span onclick="closeBlitzModal()" style="float:right; cursor:pointer; font-size:24px;">×</span>
+            <img src="blitzkrieg_poster.png" style="width:100%; border-radius:10px; margin-bottom:15px;">
+            <h2 style="color:var(--electric-blue)">BLITZKRIEG</h2>
+            <p>Fast-paced action parkour set in a Mumbai-inspired future.</p>
+            <div style="margin-top:20px; text-align:center;">
+                <img src="ravi_turnaround.png" style="width:150px; border:1px solid var(--electric-blue); border-radius:10px;">
+                <h3 style="margin-top:10px;">Ravi Thakur</h3>
+                <p style="font-size:0.9rem; color:#aaa;">Electrician Trainee mastering lightning speed.</p>
             </div>
         </div>
     </div>
 
     <div id="creditsModal" class="modal">
-        <div class="modal-content" style="text-align: center;">
-            <span class="close-modal" onclick="closeCreditsModal()">×</span>
-            <h2 style="color: var(--electric-blue); font-size: 2.2rem; margin-bottom: 20px;">The Collective</h2>
-            <p style="color: #ccc; margin-bottom: 30px;">The minds building the CosmicChild universe.</p>
-            
-            <div style="margin-bottom: 25px;">
-                <h3 style="color: white;">Clifern Mauricio Miranda</h3>
-                <p style="color: var(--electric-blue); font-size: 0.9rem;">Founder & Narrative Designer</p>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <h3 style="color: white;">Chirag Kankonkar</h3>
-                <p style="color: var(--electric-blue); font-size: 0.9rem;">Supportive Designing, Storyboard Narration & Overall Design</p>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <h3 style="color: white;">Jeet Madhu Pagi</h3>
-                <p style="color: var(--electric-blue); font-size: 0.9rem;">Artist, Programmer, Concept Developer</p>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <h3 style="color: white;">Arya Costa Shirodkar</h3>
-                <p style="color: var(--electric-blue); font-size: 0.9rem;">Storyboard Corrector & Narrative Designing</p>
-            </div>
-            
-            <hr style="opacity: 0.2; margin: 30px 0;">
-            <p style="color: #ccc; font-size: 0.9rem;">To all the volunteers and supporters helping us build the future.</p>
+        <div class="modal-content" style="text-align:center;">
+            <span onclick="closeCreditsModal()" style="float:right; cursor:pointer; font-size:24px;">×</span>
+            <h2 style="color:var(--electric-blue)">The Collective</h2>
+            <br>
+            <p><b>Clifern Mauricio Miranda</b><br>Founder</p><br>
+            <p><b>Chirag Kankonkar</b><br>Story & Design</p><br>
+            <p><b>Jeet Madhu Pagi</b><br>Artist & Programmer</p><br>
+            <p><b>Arya Costa Shirodkar</b><br>Narrative Design</p>
         </div>
     </div>
 
-    <section id="collaborate" class="section" style="text-align: center; padding-bottom: 100px;">
-        <h2>Build the Future With Us</h2>
-        <p style="margin: 20px 0; color: #ccc;">We allow creators to collaborate and volunteer to make these worlds a reality.</p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-            <a href="https://instagram.com/cosmicchildstudious" target="_blank" style="background: var(--electric-blue); color: black; border: none; padding: 15px 30px; font-weight: bold; border-radius: 5px; text-transform: uppercase; text-decoration: none; display: inline-block;">
-                Join the Collective
-            </a>
-            <button onclick="openCreditsModal()" style="background: transparent; color: var(--electric-blue); border: 1px solid var(--electric-blue); padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 5px; text-transform: uppercase;">
-                Co-Founders & Credits
-            </button>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px;">
-        <div style="margin-bottom: 25px;">
-            <a href="https://instagram.com/cosmicchildstudious" target="_blank" style="color: var(--electric-blue); text-decoration: none; font-size: 1rem; border: 1px solid var(--electric-blue); padding: 10px 20px; border-radius: 5px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">
-                Follow us on Instagram 📸
+    <footer>
+        <div style="margin-bottom: 30px;">
+            <a href="https://www.instagram.com/cosmicchildstudios?igsh=MXZkOTkwdXVlNzlxcQ==" target="_blank" class="insta-footer-btn">
+                <span>Follow us on Instagram</span>
+                <span style="font-size: 1.2rem;">📸</span>
             </a>
         </div>
-        <p style="opacity: 0.5;">© 2026 COSMICCHILD STUDIOS | CLIFERN MAURICIO MIRANDA</p>
+        <p style="opacity: 0.5; font-size: 12px;">© 2026 COSMICCHILD STUDIOS | CLIFERN MAURICIO MIRANDA</p>
     </footer>
 
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById('founderSidebar');
-            sidebar.style.right = (sidebar.style.right === '0px') ? '-100%' : '0px';
+            const s = document.getElementById('founderSidebar');
+            s.style.right = (s.style.right === '0px') ? '-100%' : '0px';
         }
+        function openJoinModal() { document.getElementById("joinModal").style.display = "block"; }
+        function closeJoinModal() { document.getElementById("joinModal").style.display = "none"; }
+        
+        function openBlitzModal() { document.getElementById("blitzModal").style.display = "block"; }
+        function closeBlitzModal() { document.getElementById("blitzModal").style.display = "none"; }
+        
+        function openCreditsModal() { document.getElementById("creditsModal").style.display = "block"; }
+        function closeCreditsModal() { document.getElementById("creditsModal").style.display = "none"; }
 
-        const blitzModal = document.getElementById("blitzModal");
-        function openBlitzModal() { blitzModal.style.display = "block"; }
-        function closeBlitzModal() { blitzModal.style.display = "none"; }
-
-        const creditsModal = document.getElementById("creditsModal");
-        function openCreditsModal() { creditsModal.style.display = "block"; }
-        function closeCreditsModal() { creditsModal.style.display = "none"; }
-
-        window.onclick = function(event) {
-            if (event.target == blitzModal) blitzModal.style.display = "none";
-            if (event.target == creditsModal) creditsModal.style.display = "none";
+        window.onclick = function(e) {
+            if (e.target.className === 'modal') { e.target.style.display = "none"; }
         }
     </script>
 </body>
-              </html>
-              
+</html>
