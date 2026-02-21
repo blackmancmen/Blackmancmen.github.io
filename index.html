@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CosmicChild Studios | Unleash the Storm</title>
+    <style>
+        :root {
+            --bg-space: #050508;
+            --electric-blue: #00d2ff;
+            --cosmic-white: #f0f0f0;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--cosmic-white);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #050508 100%);
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-img { height: 50px; }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--electric-blue); }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-space)), url('blitzkrieg_poster.png'); 
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 4rem; letter-spacing: 10px; text-transform: uppercase; }
+        .hero p { font-size: 1.2rem; color: var(--electric-blue); margin-top: 10px; }
+
+        /* About Section */
+        .section { padding: 100px 10%; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+
+        /* Blitzkrieg Project */
+        .project-card {
+            background: var(--glass);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+
+        .ravi-profile {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive image scaling */
+        .ravi-img { width: 100%; max-width: 300px; border-radius: 10px; border: 1px solid var(--electric-blue); height: auto; }
+
+        /* Founder Sidebar */
+        #founderSidebar {
+            position: fixed;
+            right: -350px;
+            top: 0;
+            width: 350px;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transition: 0.5s;
+            padding: 60px 30px;
+            border-left: 1px solid var(--electric-blue);
+        }
+
+        .sidebar-btn {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--electric-blue);
+            color: black;
+            padding: 15px 5px;
+            writing-mode: vertical-rl;
+            cursor: pointer;
+            border-radius: 5px 0 0 5px;
+            font-weight: bold;
+            z-index: 1001;
+        }
+
+        .close-sidebar { position: absolute; top: 20px; left: 20px; cursor: pointer; color: white; font-weight: bold; }
+
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .status { color: var(--electric-blue); font-weight: bold; }
+
+        /* =========================================
+           MOBILE RESPONSIVE BREAKPOINT (MAX 768px)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Adjust the navigation to wrap neatly on small screens */
+            nav {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .logo-img { margin-bottom: 10px; }
+            .nav-links { display: flex; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { margin: 5px 10px; font-size: 11px; }
+
+            /* Shrink massive headers so they fit on phones */
+            .hero h1 { font-size: 2.2rem; letter-spacing: 5px; }
+            .hero p { font-size: 1rem; }
+
+            /* Stack the About section vertically instead of side-by-side */
+            .about-grid { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .about-grid img { margin: 0 auto; display: block; }
+            .about-grid div { text-align: center !important; }
+
+            /* Stack Ravi's profile vertically */
+            .ravi-profile { gap: 20px; }
+            .project-card { padding: 20px; }
+
+            /* Make the sidebar full screen on mobile */
+            #founderSidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="logo.png" alt="CosmicChild Logo" class="logo-img">
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#collaborate">Collaborate</a>
+        </div>
+    </nav>
+
+    <div class="sidebar-btn" onclick="toggleSidebar()">FOUNDER</div>
+
+    <div id="founderSidebar">
+        <div class="close-sidebar" onclick="toggleSidebar()">✕ CLOSE</div>
+        <h2 style="color: var(--electric-blue); margin-top: 20px;">Clifern Mauricio Miranda</h2>
+        <p style="font-size: 0.8rem; margin-bottom: 20px;">Founder & Narrative Designer</p>
+        <hr style="opacity: 0.2; margin-bottom: 20px;">
+        <p><b>Born:</b> 17/09/2010</p>
+        <p><b>Experience:</b> Active in game field since 2015.</p>
+        <br>
+        <p>Clifern started his journey writing metaphysical theories on Medium at age 14. This deep dive into storytelling led to the creation of CosmicChild Studios, designing complex video game narratives and worlds.</p>
+    </div>
+
+    <section class="hero">
+        <h1>CosmicChild</h1>
+        <p>Games you don't just play, but feel.</p>
+    </section>
+
+    <section id="about" class="section">
+        <div class="about-grid">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">About the Studio</h2>
+                <p>CosmicChild Studio is an independent game development studio driven by imagination, experimentation, and bold storytelling. Inspired by urban culture, real human struggles, and futuristic ideas.</p>
+            </div>
+            <div style="text-align: right;">
+                <img src="logo.png" style="width: 200px; opacity: 0.5;">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section" style="background: rgba(255,255,255,0.02)">
+        <h2 style="text-align: center; font-size: 2.5rem;">The Vault</h2>
+        
+        <div class="project-card">
+            <h3 style="color: var(--electric-blue); font-size: 2rem;">BLITZKRIEG</h3>
+            <p><i>"Move fast. Stay charged. Control the current."</i></p>
+            
+            <div class="ravi-profile">
+                <img src="ravi_turnaround.png" class="ravi-img">
+                <div style="flex: 1;">
+                    <h4>Protagonist: Ravi Thakur</h4>
+                    <p style="font-size: 0.9rem; margin: 10px 0; color: #aaa;">Age: 19 | Height: 5'10" - 6'2" | Role: Electrician Trainee</p>
+                    <p>A fast-paced action-adventure set in a dense Mumbai-inspired city. Follow Ravi, whose life takes a turn after a mysterious incident, forcing him to master electrical abilities beyond human limits.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>2086</td>
+                    <td>Game</td>
+                    <td class="status">COMING SOON</td>
+                </tr>
+                <tr>
+                    <td>COSMIC COLLAPSE</td>
+                    <td>Game</td>
+                    <td class="status">COMING SOON AT LAST</td>
+                </tr>
+                <tr>
+                    <td>Animations</td>
+                    <td>Animation</td>
+                    <td class="status">COMING SOON</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section id="collaborate" class="section" style="text-align: center;">
+        <h2>Build the Future With Us</h2>
+        <p style="margin: 20px 0;">We allow creators to collaborate and volunteer to make these worlds a reality.</p>
+        <button style="background: var(--electric-blue); border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; border-radius: 5px;">JOIN THE COLLECTIVE</button>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.5;">
+        © 2026 COSMICCHILD STUDIOS | CLIFERN MAURICIO MIRANDA
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('founderSidebar');
+            // Check if the screen is mobile sized
+            const isMobile = window.innerWidth <= 768; 
+            
+            if (sidebar.style.right === '0px') {
+                sidebar.style.right = isMobile ? '-100%' : '-350px';
+            } else {
+                sidebar.style.right = '0px';
+            }
+        }
+    </script>
+</body>
+</html>
